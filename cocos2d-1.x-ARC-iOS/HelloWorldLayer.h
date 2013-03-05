@@ -6,7 +6,7 @@
 //  Copyright __MyCompanyName__ 2012. All rights reserved.
 //
 
-
+#import<Foundation/Foundation.h>
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 #import "Pomelo.h"
@@ -29,7 +29,6 @@
     NSArray *resources;
     CCLabelTTF *label;
 }
-
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;

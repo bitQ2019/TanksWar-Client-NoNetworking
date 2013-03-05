@@ -32,43 +32,50 @@
 }
 // on "init" you need to initialize your instance
 -(id) init
-{
-    
-        
-	// always call "super" init
+{   // always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
-               
+        
+        tagSprites=[[NSMutableArray alloc] init];
+        buildingSprites=[[NSMutableArray alloc] init];
+        //  从文件中读取数据
+         CCSpriteBatchNode *tags=[CCSpriteBatchNode batchNodeWithFile:@"tags.png" capacity:24];
+                   [self addChild:tags z:2 tag:100];
+        NSString *filename=@"DataList.plist";
+        NSDictionary *dict=[NSDictionary dictionaryWithContentsOfFile:[self getActuralPath:filename ]];
+        NSArray *nodes=[dict objectForKey:@"nodes"];
+        for (id node in nodes)
+        {
+            int x=[[node objectForKey:@"x"]floatValue   ];
+            int y=[[node objectForKey:@"y"]floatValue];
+            CCSprite *s=[CCSprite spriteWithBatchNode:tags  rect:CGRectMake(0, 0, 64, 64)];
+            [tags addChild:s ];
+            [s setPosition:ccp(x,y)];
+            
+            [tagSprites addObject:s];
+        }
+   
+        
         playerResource=[[Resources alloc] init];
         [playerResource initialazation];
         CGSize size = [[CCDirector sharedDirector] winSize];
-        tagSprites=[[NSMutableArray alloc] init];   
-       buildingSprites=[[NSMutableArray alloc] init];
-        
 		// create and initialize a Label
 		//CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-        CCSprite *BackGround=[CCSprite spriteWithFile:@"background.png" rect:CGRectMake(0, 0, 1024, 768)];
+        CCSprite *BackGround=[CCSprite spriteWithFile:@"map.png" rect:CGRectMake(0, 0, 1024, 768)];
         BackGround.anchorPoint=ccp(0, 0);
         [self addChild:BackGround z:1   tag:0];
-        
-        CCSpriteBatchNode *tags=[CCSpriteBatchNode batchNodeWithFile:@"tags.png" capacity:24];
-        
-        [self addChild:tags z:2 tag:100];
-        for (int y=0; y<4; y++)
+
+        /*for (int y=0; y<4; y++)
             for (int x=0; x<6; x++)
             {
                 CCSprite *s=[CCSprite spriteWithBatchNode:tags rect:CGRectMake(0, 0, 64, 64)];
-              s.tag=y*6+x+1;
             [s setOpacity:255];
             [tags addChild:s ];
             [s setPosition:ccp(size.width*(2+x)/12, size.height*(3+y)/10)];
                 [tagSprites addObject:s ];
         
             }
-        
-        
-        
-        
+        */
         //pomelo
         name = @"chenyl107";
         channel = @"junshi";
@@ -92,7 +99,7 @@
     
         CCMenu *changeScene=[CCMenu menuWithItems:militaryArea, nil];
         [changeScene alignItemsHorizontally];
-        [changeScene setPosition:ccp(800, 670)];
+        [changeScene setPosition:ccp(930, 730)];
         [self addChild:changeScene z:2 tag:102];
          [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
         
@@ -103,6 +110,13 @@
 	}
 	return self;
  
+}
+
+-(NSString*) getActuralPath:(NSString *) file
+{
+    NSArray *path=[file componentsSeparatedByString:@"."    ];
+    NSString *acturalPath=[[NSBundle mainBundle] pathForResource:[path objectAtIndex:0] ofType:[path objectAtIndex:1]];
+    return acturalPath;
 }
 -(BOOL) initPomelo
 {
@@ -211,7 +225,8 @@
     CGPoint point;
     point=[self convertTouchToNodeSpace:touch];
     [self selectSpriteForTouch:point];
-    
+    NSLog(@"%f",point.x);
+    NSLog(@"%f",point.y);
     return TRUE;
 
 }
