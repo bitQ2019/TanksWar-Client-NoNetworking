@@ -8,12 +8,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "cocos2d-1.x-ARC-iOS/HelloWorldLayer.m"
-         timestampString = "384182998.07237"
+         timestampString = "384347468.81986"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "234"
-         endingLineNumber = "234"
+         startingLineNumber = "222"
+         endingLineNumber = "222"
          landmarkName = "-selectSpriteForTouch:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "cocos2d-1.x-ARC-iOS/HelloWorldLayer.m"
+         timestampString = "384347468.81986"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "395"
+         endingLineNumber = "395"
+         landmarkName = "-rotateWrench"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "cocos2d-1.x-ARC-iOS/HelloWorldLayer.m"
+         timestampString = "384347468.81986"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "393"
+         endingLineNumber = "393"
+         landmarkName = "-rotateWrench"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

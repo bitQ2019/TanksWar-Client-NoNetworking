@@ -8,6 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Interger : NSObject
-
+@interface Integer : NSObject
 @end
