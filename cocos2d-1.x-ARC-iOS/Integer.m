@@ -6,8 +6,8 @@
 //
 //
 
-#import "Integer.h"
+#import "Interger.h"
 
-@implementation Integer
+@implementation Interger
 
 @end

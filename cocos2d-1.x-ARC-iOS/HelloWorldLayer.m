@@ -10,6 +10,7 @@
 // Import the interfaces
 #import "HelloWorldLayer.h"
 #import<math.h>
+
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
 @synthesize pomelo;
@@ -44,9 +45,9 @@
         NSDictionary *dict=[NSDictionary dictionaryWithContentsOfFile:[self getActuralPath:filename ]];
         NSArray *nodes=[dict objectForKey:@"nodes"];
         for (id node in nodes)
-        { 
-            int x=[[node objectForKey:@"x"] floatValue   ];
-            int y=[[node objectForKey:@"y"] floatValue];
+        {
+            int x=[[node objectForKey:@"x"]floatValue   ];
+            int y=[[node objectForKey:@"y"]floatValue];
             CCSprite *s=[CCSprite spriteWithBatchNode:tags  rect:CGRectMake(0, 0, 64, 64)];
             [tags addChild:s ];
             [s setPosition:ccp(x,y)];
@@ -60,10 +61,21 @@
         CGSize size = [[CCDirector sharedDirector] winSize];
 		// create and initialize a Label
 		//CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-        CCSprite *BackGround=[CCSprite spriteWithFile:@"map.png" rect:CGRectMake(0,0, 1024, 768)];
+        CCSprite *BackGround=[CCSprite spriteWithFile:@"map.png" rect:CGRectMake(0, 0, 1024, 768)];
         BackGround.anchorPoint=ccp(0, 0);
-        [self addChild:BackGround z:1   tag:TAG_BACKGROUND] ;
-  
+        [self addChild:BackGround z:1   tag:0];
+
+        /*for (int y=0; y<4; y++)
+            for (int x=0; x<6; x++)
+            {
+                CCSprite *s=[CCSprite spriteWithBatchNode:tags rect:CGRectMake(0, 0, 64, 64)];
+            [s setOpacity:255];
+            [tags addChild:s ];
+            [s setPosition:ccp(size.width*(2+x)/12, size.height*(3+y)/10)];
+                [tagSprites addObject:s ];
+        
+            }
+        */
         //pomelo
         name = @"chenyl107";
         channel = @"junshi";
@@ -205,7 +217,6 @@
     
 
 }
-
 -(BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     
@@ -253,22 +264,23 @@
 -(void) ChoicePanel
 {
     CGSize size = [[CCDirector sharedDirector] winSize];
-    CCSprite *Panel=[CCSprite spriteWithFile:@"弹框.png"];
+    CCSprite *Panel=[CCSprite spriteWithFile:@"panel.png"];
     Panel.position=ccp(size.width/2, size.height/2);
-    [self addChild:Panel z:3 tag:3];
-    CCSprite *Menu1=[CCSprite spriteWithFile:@"农田－menu.png" rect:CGRectMake(0, 0, 100, 100) ];
-    CCSprite *Menu2=[CCSprite spriteWithFile:@"钢铁厂－menu.png" rect:CGRectMake(0,0,100,100) ];
-    CCSprite *Menu3=[CCSprite spriteWithFile:@"石油厂－menu.png" rect:CGRectMake(0, 0,100, 100)];
-    CCSprite *Menu4=[CCSprite spriteWithFile:@"稀矿场－menu.png" rect:CGRectMake(0, 0, 100, 100)];
     
-    CCMenuItemSprite *menu1=[CCMenuItemSprite itemFromNormalSprite:Menu1 selectedSprite:nil target:self selector:@selector(Choicemenu1:) ];
+    [self addChild:Panel z:3 tag:3];
+    
+    CCSprite *Menu1=[CCSprite spriteWithFile:@"农田menu.png"];
+    CCSprite *Menu2=[CCSprite spriteWithFile:@"石油厂menu.png"];
+    CCSprite *Menu3=[CCSprite spriteWithFile:@"钢铁厂menu.png"];
+    CCSprite *Menu4=[CCSprite spriteWithFile:@"稀矿场menu.png"];
+    CCMenuItemSprite *menu1=[CCMenuItemSprite itemFromNormalSprite:Menu1 selectedSprite:nil target:self selector:@selector(Choicemenu1:)];
     CCMenuItemSprite *menu2=[CCMenuItemSprite itemFromNormalSprite:Menu2 selectedSprite:nil target:self selector:@selector(Choicemenu2:)];
     CCMenuItemSprite *menu3=[CCMenuItemSprite itemFromNormalSprite:Menu3 selectedSprite:nil target:self selector:@selector(Choicemenu3:)];
     CCMenuItemSprite *menu4=[CCMenuItemSprite itemFromNormalSprite:Menu4 selectedSprite:nil target:self selector:@selector(Choicemenu4:)];
-    //CCMenuItemSprite *menu3=[CCMenuItemSprite i]
+
     CCMenu *menu=[CCMenu menuWithItems:menu1,menu2,menu3,menu4,nil];
-    [menu alignItemsVerticallyWithPadding:0];
-    [menu setPosition:ccp(7*size.width/24,5*size.height/11 )];
+    [menu alignItemsVerticallyWithPadding:-20];
+    [menu setPosition:ccp(7*size.width/24, 9*size.height/20)];
     [self addChild:menu z:4 tag:4];
 }
 -(void)Choicemenu1:sender
@@ -280,8 +292,7 @@
     [buildingSprites addObject:Build];
     Build.position=selSprite.position;
     [self addChild:Build z:3];
-    [self rotateWrench];
-    
+   [self rotateWrench];
     
     CGPoint myp = Build.position;
     [self saveToServer:&myp withPng:@"农田.png"];
@@ -293,13 +304,14 @@
     [self removeChildByTag:4 cleanup:YES];
     [self removeChildByTag:3 cleanup:YES];
     self.isTouchEnabled=YES;
-    CCSprite *Build=[CCSprite spriteWithFile:@"钢铁厂.png"];
+    CCSprite *Build=[CCSprite spriteWithFile:@"石油厂.png"];
     [buildingSprites addObject:Build];
     Build.position=selSprite.position;
     [self addChild:Build z:3];
     [self rotateWrench];
+    
     CGPoint myp = Build.position;
-    [self saveToServer:&myp withPng:@"building2.png"];
+    [self saveToServer:&myp withPng:@"石油厂.png"];
     
 }
 -(void)Choicemenu3:sender
@@ -307,13 +319,15 @@
     [self removeChildByTag:4 cleanup:YES];
     [self removeChildByTag:3 cleanup:YES];
     self.isTouchEnabled=YES;
-    CCSprite *Build=[CCSprite spriteWithFile:@"石油厂.png"];
+    CCSprite *Build=[CCSprite spriteWithFile:@"钢铁厂.png"];
     [buildingSprites addObject:Build];
     Build.position=selSprite.position;
     [self addChild:Build z:3];
     [self rotateWrench];
+    
     CGPoint myp = Build.position;
-    [self saveToServer:&myp withPng:@"building2.png"];
+    [self saveToServer:&myp withPng:@"钢铁厂.png"];
+    
     
 }
 -(void)Choicemenu4:sender
@@ -326,9 +340,28 @@
     Build.position=selSprite.position;
     [self addChild:Build z:3];
     [self rotateWrench];
-    CGPoint myp = Build.position;
-    [self saveToServer:&myp withPng:@"building2.png"];
     
+    CGPoint myp = Build.position;
+    [self saveToServer:&myp withPng:@"稀矿场.png"];
+    
+    
+}
+-(void)rotateWrench
+{
+    CCSprite *wrench=[CCSprite spriteWithFile:@"wrench.png"];
+    wrench.position=ccp(selSprite.position.x-40, selSprite.position.y+40);
+    [self addChild:wrench z:3 tag:19 ];
+    
+    CCAction *rotate1=[CCRotateBy actionWithDuration:0.5 angle:60];
+    CCAction *rotate2=[CCRotateBy actionWithDuration:0.5 angle:-60];
+    CCAction *repeat=[CCRepeat actionWithAction:[CCSequence actions:rotate1,rotate2 ,nil] times:10];
+    CCAction *delete=[CCCallFuncN actionWithTarget:self selector:@selector(deleteWrench:)];
+    [wrench runAction:[CCSequence actions:repeat,delete, nil]];
+    
+}
+-(void)deleteWrench:(id)sender
+{
+    [self removeChild:sender cleanup:YES];
 }
 -(void)saveToServer:(CGPoint *)point withPng:(NSString *)png
 {
@@ -384,28 +417,7 @@
     CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
     [[CCDirector sharedDirector] replaceScene:tran];
 }
--(void) rotateWrench
-{
-    CCSprite *wrench=[CCSprite spriteWithFile:@"Wrench2.png" ];
-    wrench.position=ccp(selSprite.position.x-50, selSprite.position.y+50);
-    [self addChild:wrench z:2 tag:19];
-    CCAction *rotate1=[CCRotateBy actionWithDuration:0.75 angle:60.0f];
-    CCAction *rotate2=[CCRotateBy actionWithDuration:0.75 angle:-60.0f];
-    CCSequence *sequence=[CCSequence actions: rotate1,rotate2,nil];
-    CCRepeat *repeat=[CCRepeat actionWithAction:sequence  times:10 ];
-    repeat.tag=20;
-    CCAction *delete=[CCCallFuncN actionWithTarget:self selector:@selector(clean:) ];
-    [wrench runAction:[CCSequence actions:repeat,delete,nil]];
-        
-}
--(void)clean:(id)sender
-{
-    [self removeChild:sender cleanup:YES];
-}
--(void) showLeaveAlert
-{
-    //UIAlertView ＊alert=[UIAlertView ]
-}
+
 -(void)addup:(id)sender
 {
     [playerResource setCrop:50];

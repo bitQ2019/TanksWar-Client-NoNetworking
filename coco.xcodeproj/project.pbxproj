@@ -25,20 +25,19 @@
 		2A103689169AEB55001311F1 /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A103681169AEB55001311F1 /* SocketIOPacket.m */; };
 		2A10368A169AEB55001311F1 /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A103684169AEB55001311F1 /* SocketIOTransportWebsocket.m */; };
 		2A10368B169AEB55001311F1 /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A103686169AEB55001311F1 /* SocketIOTransportXHR.m */; };
-		AC48F21316E71E44008B3D11 /* 钢铁厂－menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC48F20F16E71E43008B3D11 /* 钢铁厂－menu.png */; };
-		AC48F21416E71E44008B3D11 /* 农田－menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC48F21016E71E43008B3D11 /* 农田－menu.png */; };
-		AC48F21516E71E44008B3D11 /* 石油厂－menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC48F21116E71E43008B3D11 /* 石油厂－menu.png */; };
-		AC48F21616E71E44008B3D11 /* 稀矿场－menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC48F21216E71E44008B3D11 /* 稀矿场－menu.png */; };
-		AC48F21816E72AF8008B3D11 /* Wrench2.png in Resources */ = {isa = PBXBuildFile; fileRef = AC48F21716E72AF8008B3D11 /* Wrench2.png */; };
 		AC4C7E3B169AADA8007ECFC4 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4C7E37169AADA6007ECFC4 /* background.png */; };
-		AC4C7E3C169AADA8007ECFC4 /* background@2xpng in Resources */ = {isa = PBXBuildFile; fileRef = AC4C7E38169AADA7007ECFC4 /* background@2xpng */; };
+		AC4C7E3C169AADA8007ECFC4 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4C7E38169AADA7007ECFC4 /* background@2x.png */; };
 		AC4C7E3D169AADA8007ECFC4 /* menu1.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4C7E39169AADA7007ECFC4 /* menu1.png */; };
 		AC4C7E3E169AADA8007ECFC4 /* menu2.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4C7E3A169AADA8007ECFC4 /* menu2.png */; };
 		AC4C7E41169AAF76007ECFC4 /* building1.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4C7E3F169AAF75007ECFC4 /* building1.png */; };
 		AC4C7E42169AAF76007ECFC4 /* building2.png in Resources */ = {isa = PBXBuildFile; fileRef = AC4C7E40169AAF76007ECFC4 /* building2.png */; };
-		AC7438E916E8AD9E006C0B19 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC7438E716E8AD9E006C0B19 /* ViewController.m */; };
-		AC7438EA16E8AD9E006C0B19 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC7438E816E8AD9E006C0B19 /* ViewController.xib */; };
-		ACEF913616E6079B00DD7120 /* 弹框1.png in Resources */ = {isa = PBXBuildFile; fileRef = ACEF912F16E6079B00DD7120 /* 弹框1.png */; };
+		AC622C6A16E972E20030E4E7 /* panel.png in Resources */ = {isa = PBXBuildFile; fileRef = AC622C6816E972E20030E4E7 /* panel.png */; };
+		AC622C7216E974B70030E4E7 /* wrench.png in Resources */ = {isa = PBXBuildFile; fileRef = AC622C6C16E974B70030E4E7 /* wrench.png */; };
+		AC622C7316E974B70030E4E7 /* 弹框1.png in Resources */ = {isa = PBXBuildFile; fileRef = AC622C6D16E974B70030E4E7 /* 弹框1.png */; };
+		AC622C8616E97F960030E4E7 /* 钢铁厂menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC622C8216E97F960030E4E7 /* 钢铁厂menu.png */; };
+		AC622C8716E97F960030E4E7 /* 农田menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC622C8316E97F960030E4E7 /* 农田menu.png */; };
+		AC622C8816E97F960030E4E7 /* 石油厂menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC622C8416E97F960030E4E7 /* 石油厂menu.png */; };
+		AC622C8916E97F960030E4E7 /* 稀矿场menu.png in Resources */ = {isa = PBXBuildFile; fileRef = AC622C8516E97F960030E4E7 /* 稀矿场menu.png */; };
 		ACEF913716E6079B00DD7120 /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ACEF913016E6079B00DD7120 /* map@2x.png */; };
 		ACEF913816E6079B00DD7120 /* 钢铁厂.png in Resources */ = {isa = PBXBuildFile; fileRef = ACEF913116E6079B00DD7120 /* 钢铁厂.png */; };
 		ACEF913916E6079B00DD7120 /* 农田.png in Resources */ = {isa = PBXBuildFile; fileRef = ACEF913216E6079B00DD7120 /* 农田.png */; };
@@ -288,21 +287,19 @@
 		2A103684169AEB55001311F1 /* SocketIOTransportWebsocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportWebsocket.m; sourceTree = "<group>"; };
 		2A103685169AEB55001311F1 /* SocketIOTransportXHR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportXHR.h; sourceTree = "<group>"; };
 		2A103686169AEB55001311F1 /* SocketIOTransportXHR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportXHR.m; sourceTree = "<group>"; };
-		AC48F20F16E71E43008B3D11 /* 钢铁厂－menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "钢铁厂－menu.png"; sourceTree = "<group>"; };
-		AC48F21016E71E43008B3D11 /* 农田－menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "农田－menu.png"; sourceTree = "<group>"; };
-		AC48F21116E71E43008B3D11 /* 石油厂－menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "石油厂－menu.png"; sourceTree = "<group>"; };
-		AC48F21216E71E44008B3D11 /* 稀矿场－menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "稀矿场－menu.png"; sourceTree = "<group>"; };
-		AC48F21716E72AF8008B3D11 /* Wrench2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wrench2.png; sourceTree = "<group>"; };
 		AC4C7E37169AADA6007ECFC4 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../background.png; sourceTree = "<group>"; };
-		AC4C7E38169AADA7007ECFC4 /* background@2xpng */ = {isa = PBXFileReference; lastKnownFileType = file; name = "background@2xpng"; path = "../background@2xpng"; sourceTree = "<group>"; };
+		AC4C7E38169AADA7007ECFC4 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background@2x.png"; path = "../background@2x.png"; sourceTree = "<group>"; };
 		AC4C7E39169AADA7007ECFC4 /* menu1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu1.png; path = ../menu1.png; sourceTree = "<group>"; };
 		AC4C7E3A169AADA8007ECFC4 /* menu2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu2.png; path = ../menu2.png; sourceTree = "<group>"; };
 		AC4C7E3F169AAF75007ECFC4 /* building1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = building1.png; path = ../building1.png; sourceTree = "<group>"; };
 		AC4C7E40169AAF76007ECFC4 /* building2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = building2.png; path = ../building2.png; sourceTree = "<group>"; };
-		AC7438E616E8AD9E006C0B19 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AC7438E716E8AD9E006C0B19 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		AC7438E816E8AD9E006C0B19 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
-		ACEF912F16E6079B00DD7120 /* 弹框1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "弹框1.png"; sourceTree = "<group>"; };
+		AC622C6816E972E20030E4E7 /* panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = panel.png; sourceTree = "<group>"; };
+		AC622C6C16E974B70030E4E7 /* wrench.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wrench.png; sourceTree = "<group>"; };
+		AC622C6D16E974B70030E4E7 /* 弹框1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "弹框1.png"; sourceTree = "<group>"; };
+		AC622C8216E97F960030E4E7 /* 钢铁厂menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "钢铁厂menu.png"; sourceTree = "<group>"; };
+		AC622C8316E97F960030E4E7 /* 农田menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "农田menu.png"; sourceTree = "<group>"; };
+		AC622C8416E97F960030E4E7 /* 石油厂menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "石油厂menu.png"; sourceTree = "<group>"; };
+		AC622C8516E97F960030E4E7 /* 稀矿场menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "稀矿场menu.png"; sourceTree = "<group>"; };
 		ACEF913016E6079B00DD7120 /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
 		ACEF913116E6079B00DD7120 /* 钢铁厂.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "钢铁厂.png"; sourceTree = "<group>"; };
 		ACEF913216E6079B00DD7120 /* 农田.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "农田.png"; sourceTree = "<group>"; };
@@ -646,9 +643,6 @@
 		DC087EE215BDA9470044A820 /* cocos2d-1.x-ARC-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				AC7438E616E8AD9E006C0B19 /* ViewController.h */,
-				AC7438E716E8AD9E006C0B19 /* ViewController.m */,
-				AC7438E816E8AD9E006C0B19 /* ViewController.xib */,
 				2A10363A169AE798001311F1 /* pomelo */,
 				DC08803715BDA94A0044A820 /* AppDelegate.h */,
 				DC08803815BDA94A0044A820 /* AppDelegate.m */,
@@ -671,13 +665,14 @@
 		DC087EE315BDA9470044A820 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AC48F21716E72AF8008B3D11 /* Wrench2.png */,
-				AC48F20F16E71E43008B3D11 /* 钢铁厂－menu.png */,
-				AC48F21016E71E43008B3D11 /* 农田－menu.png */,
-				AC48F21116E71E43008B3D11 /* 石油厂－menu.png */,
-				AC48F21216E71E44008B3D11 /* 稀矿场－menu.png */,
+				AC622C8216E97F960030E4E7 /* 钢铁厂menu.png */,
+				AC622C8316E97F960030E4E7 /* 农田menu.png */,
+				AC622C8416E97F960030E4E7 /* 石油厂menu.png */,
+				AC622C8516E97F960030E4E7 /* 稀矿场menu.png */,
+				AC622C6C16E974B70030E4E7 /* wrench.png */,
+				AC622C6D16E974B70030E4E7 /* 弹框1.png */,
+				AC622C6816E972E20030E4E7 /* panel.png */,
 				ACEF913F16E60FAC00DD7120 /* map.png */,
-				ACEF912F16E6079B00DD7120 /* 弹框1.png */,
 				ACEF913016E6079B00DD7120 /* map@2x.png */,
 				ACEF913116E6079B00DD7120 /* 钢铁厂.png */,
 				ACEF913216E6079B00DD7120 /* 农田.png */,
@@ -687,7 +682,7 @@
 				AC4C7E3F169AAF75007ECFC4 /* building1.png */,
 				AC4C7E40169AAF76007ECFC4 /* building2.png */,
 				AC4C7E37169AADA6007ECFC4 /* background.png */,
-				AC4C7E38169AADA7007ECFC4 /* background@2xpng */,
+				AC4C7E38169AADA7007ECFC4 /* background@2x.png */,
 				AC4C7E39169AADA7007ECFC4 /* menu1.png */,
 				AC4C7E3A169AADA8007ECFC4 /* menu2.png */,
 				DC087EE415BDA9470044A820 /* Default.png */,
@@ -1156,13 +1151,12 @@
 				DC087EF315BDA9470044A820 /* Icon@2x.png in Resources */,
 				DC087EF615BDA9470044A820 /* iTunesArtwork in Resources */,
 				AC4C7E3B169AADA8007ECFC4 /* background.png in Resources */,
-				AC4C7E3C169AADA8007ECFC4 /* background@2xpng in Resources */,
+				AC4C7E3C169AADA8007ECFC4 /* background@2x.png in Resources */,
 				AC4C7E3D169AADA8007ECFC4 /* menu1.png in Resources */,
 				AC4C7E3E169AADA8007ECFC4 /* menu2.png in Resources */,
 				AC4C7E41169AAF76007ECFC4 /* building1.png in Resources */,
 				AC4C7E42169AAF76007ECFC4 /* building2.png in Resources */,
 				0E0DE18616AF713F007AFF32 /* tags.png in Resources */,
-				ACEF913616E6079B00DD7120 /* 弹框1.png in Resources */,
 				ACEF913716E6079B00DD7120 /* map@2x.png in Resources */,
 				ACEF913816E6079B00DD7120 /* 钢铁厂.png in Resources */,
 				ACEF913916E6079B00DD7120 /* 农田.png in Resources */,
@@ -1170,12 +1164,13 @@
 				ACEF913B16E6079B00DD7120 /* 稀矿场.png in Resources */,
 				ACEF913E16E60A5900DD7120 /* DataList.plist in Resources */,
 				ACEF914016E60FAC00DD7120 /* map.png in Resources */,
-				AC48F21316E71E44008B3D11 /* 钢铁厂－menu.png in Resources */,
-				AC48F21416E71E44008B3D11 /* 农田－menu.png in Resources */,
-				AC48F21516E71E44008B3D11 /* 石油厂－menu.png in Resources */,
-				AC48F21616E71E44008B3D11 /* 稀矿场－menu.png in Resources */,
-				AC48F21816E72AF8008B3D11 /* Wrench2.png in Resources */,
-				AC7438EA16E8AD9E006C0B19 /* ViewController.xib in Resources */,
+				AC622C6A16E972E20030E4E7 /* panel.png in Resources */,
+				AC622C7216E974B70030E4E7 /* wrench.png in Resources */,
+				AC622C7316E974B70030E4E7 /* 弹框1.png in Resources */,
+				AC622C8616E97F960030E4E7 /* 钢铁厂menu.png in Resources */,
+				AC622C8716E97F960030E4E7 /* 农田menu.png in Resources */,
+				AC622C8816E97F960030E4E7 /* 石油厂menu.png in Resources */,
+				AC622C8916E97F960030E4E7 /* 稀矿场menu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1202,7 +1197,6 @@
 				2A10368B169AEB55001311F1 /* SocketIOTransportXHR.m in Sources */,
 				0E075F0516AF1E8A00ABD9D0 /* Resources.m in Sources */,
 				0E0DE17E16AF6AAC007AFF32 /* ResourceScene.m in Sources */,
-				AC7438E916E8AD9E006C0B19 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
