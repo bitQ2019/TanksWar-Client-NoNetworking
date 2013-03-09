@@ -8,12 +8,16 @@
 
 
 // Import the interfaces
+#import "SlidingMenuGrid.h"
 #import "HelloWorldLayer.h"
 #import<math.h>
+#import "MyUIview.h"
+#import "CCUIViewWrapper.h"
+#import "SWScrollView.h"
 
 // HelloWorldLayer implementation
 @implementation HelloWorldLayer
-@synthesize pomelo;
+@synthesize pomelo; 
 @synthesize name;
 @synthesize channel;
 +(CCScene *) scene
@@ -35,16 +39,18 @@
 {   // always call "super" init
 	// Apple recommends to re-assign "self" with the "super" return value
 	if( (self=[super init])) {
-        
+        //MyUIview *view=[[MyUIview alloc] initWithNibName:@"MyUIview" bundle:nil];
+        //[[[CCDirector sharedDirector] openGLView] addSubview:view.view];
         tagSprites=[[NSMutableArray alloc] init];
         buildingSprites=[[NSMutableArray alloc] init];
         //  从文件中读取数据
          CCSpriteBatchNode *tags=[CCSpriteBatchNode batchNodeWithFile:@"tags.png" capacity:24];
-                   [self addChild:tags z:2 tag:100];
+                   [self addChild:tags z:2 tag:TAG_TAG];
         NSString *filename=@"DataList.plist";
         NSDictionary *dict=[NSDictionary dictionaryWithContentsOfFile:[self getActuralPath:filename ]];
         NSArray *nodes=[dict objectForKey:@"nodes"];
-        for (id node in nodes)
+        
+        for (id node in nodes)//读取坐标点
         {
             int x=[[node objectForKey:@"x"]floatValue   ];
             int y=[[node objectForKey:@"y"]floatValue];
@@ -58,12 +64,12 @@
         
         playerResource=[[Resources alloc] init];
         [playerResource initialazation];
-        CGSize size = [[CCDirector sharedDirector] winSize];
+        //CGSize size = [[CCDirector sharedDirector] winSize];
 		// create and initialize a Label
 		//CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
         CCSprite *BackGround=[CCSprite spriteWithFile:@"map.png" rect:CGRectMake(0, 0, 1024, 768)];
         BackGround.anchorPoint=ccp(0, 0);
-        [self addChild:BackGround z:1   tag:0];
+        [self addChild:BackGround z:1   tag:TAG_BACKGROUND  ];
 
         /*for (int y=0; y<4; y++)
             for (int x=0; x<6; x++)
@@ -91,7 +97,7 @@
         label=[CCLabelTTF labelWithString:@"0" dimensions:CGSizeMake(100, 100) alignment: UIViewAnimationCurveEaseIn fontName:@"Arial" fontSize:16];
         [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Fuel,playerResource.Crop,playerResource.Steel,playerResource.Xi]];
         label.position=ccp(120, 670);
-        [self addChild:label z:2 tag:101];
+        [self addChild:label z:2 tag:TAG__LABAl];
         
         [CCMenuItemFont setFontName:@"Marker Felt"];
         [CCMenuItemFont setFontSize:40  ];
@@ -100,7 +106,7 @@
         CCMenu *changeScene=[CCMenu menuWithItems:militaryArea, nil];
         [changeScene alignItemsHorizontally];
         [changeScene setPosition:ccp(930, 730)];
-        [self addChild:changeScene z:2 tag:102];
+        [self addChild:changeScene z:2 tag:TAG__CHANGSCENE];
          [[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
         
         //[self schedule:@selector(addup) interval:1];
@@ -112,7 +118,7 @@
  
 }
 
--(NSString*) getActuralPath:(NSString *) file
+-(NSString*) getActuralPath:(NSString *) file//读取plist文件  确定tag坐标点
 {
     NSArray *path=[file componentsSeparatedByString:@"."    ];
     NSString *acturalPath=[[NSBundle mainBundle] pathForResource:[path objectAtIndex:0] ofType:[path objectAtIndex:1]];
@@ -249,7 +255,7 @@
         }
     }
 }
--(void)updateBuilding
+-(void)updateBuilding//升级建筑
 {
     //self.isTouchEnabled=NO;
     [CCMenuItemFont setFontName:@"Marker Felt"];
@@ -259,17 +265,55 @@
     CCMenu *menu=[CCMenu menuWithItems:Delete,upGrade,nil];
     [menu setPosition:ccp(selSprite.position.x+50, selSprite.position.y-50)];
     [menu alignItemsHorizontally];
-    [self addChild:menu z:3 tag:103];
+    [self addChild:menu z:3 tag:TAG__UPDATEBUILD];
 }
--(void) ChoicePanel
-{
+-(void) ChoicePanel//选择面板
+{ 
+    
     CGSize size = [[CCDirector sharedDirector] winSize];
     CCSprite *Panel=[CCSprite spriteWithFile:@"panel.png"];
     Panel.position=ccp(size.width/2, size.height/2);
+    [self addChild:Panel z:2 tag:TAG__PANEL];
+   
+    /*
+    NSMutableArray *allItems=[[NSMutableArray alloc] init];
+    CCSprite *firstmenu=[CCSprite spriteWithFile:@"农田menu.png"];
+    CCSprite *firstSelmenu=[CCSprite spriteWithFile:@"农田.png"];
+    CCSprite *secondmenu=[CCSprite spriteWithFile:@"石油厂menu.png"];
+    CCSprite *secondSelmenu=[CCSprite spriteWithFile:@"石油厂.png"];
+    CCSprite *thirdmenu=[CCSprite spriteWithFile:@"钢铁厂menu.png"];
+    CCSprite *thirdSelmenu=[CCSprite spriteWithFile:@"钢铁厂.png"];
+    CCSprite *forthmenu=[CCSprite spriteWithFile:@"稀矿场menu.png"];
+    CCSprite *forthSelmenu=[CCSprite spriteWithFile:@"稀矿场.png"];
+    CCMenuItemSprite    *menu1=[CCMenuItemSprite itemFromNormalSprite:firstmenu selectedSprite:firstSelmenu target:self selector:@selector(Choicemenu1:)];
+    CCMenuItemSprite    *menu2=[CCMenuItemSprite itemFromNormalSprite:secondmenu selectedSprite:secondSelmenu target:self selector: @selector(Choicemenu2:)];
+    CCMenuItemSprite     *menu3=[CCMenuItemSprite itemFromNormalSprite:thirdmenu selectedSprite:thirdSelmenu target:self selector:@selector(Choicemenu3:)   ];
+    CCMenuItemSprite    *menu4=[CCMenuItemSprite itemFromNormalSprite:forthmenu selectedSprite:forthSelmenu target:self selector:@selector(Choicemenu4:)];
+    menu1.tag=1001;
+    menu2.tag=1002;
+    menu3.tag=1003;
+    menu4.tag=1004;
+    [allItems addObject:menu1];
+    [allItems addObject:menu2];
+    [allItems addObject:menu3];
+    [allItems addObject:menu4];
+    SlidingMenuGrid *menugrid=[SlidingMenuGrid menuWithArray:allItems cols:1 rows:4 position:ccp(size.width/2,size.height/2) padding:CGPointMake(100, 100) verticalPaging:YES];
+    menugrid.contentSize=CGSizeMake(100, 100);
+
+    [self addChild:menugrid z:2 tag:1005];
+    */
+    /*UIScrollView *scroll=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 340, 595)];
+    scroll.backgroundColor=[UIColor colorWithRed:0     green:0 blue:0 alpha:1];
+    CGPoint nodeSize=ccp(340,595);
+    int nodecount=4;
+    scroll.contentSize=CGSizeMake(nodeSize.x*2, nodeSize.y);
+    CCUIViewWrapper *wrapper=[CCUIViewWrapper wrapperForUIView:scroll];
+    wrapper.position=ccp(185,809);
+
+    [self addChild:wrapper z:2 tag:20];
+     */
     
-    [self addChild:Panel z:3 tag:3];
-    
-    CCSprite *Menu1=[CCSprite spriteWithFile:@"农田menu.png"];
+       CCSprite *Menu1=[CCSprite spriteWithFile:@"农田menu.png"];
     CCSprite *Menu2=[CCSprite spriteWithFile:@"石油厂menu.png"];
     CCSprite *Menu3=[CCSprite spriteWithFile:@"钢铁厂menu.png"];
     CCSprite *Menu4=[CCSprite spriteWithFile:@"稀矿场menu.png"];
@@ -277,11 +321,11 @@
     CCMenuItemSprite *menu2=[CCMenuItemSprite itemFromNormalSprite:Menu2 selectedSprite:nil target:self selector:@selector(Choicemenu2:)];
     CCMenuItemSprite *menu3=[CCMenuItemSprite itemFromNormalSprite:Menu3 selectedSprite:nil target:self selector:@selector(Choicemenu3:)];
     CCMenuItemSprite *menu4=[CCMenuItemSprite itemFromNormalSprite:Menu4 selectedSprite:nil target:self selector:@selector(Choicemenu4:)];
-
+   
     CCMenu *menu=[CCMenu menuWithItems:menu1,menu2,menu3,menu4,nil];
     [menu alignItemsVerticallyWithPadding:-20];
     [menu setPosition:ccp(7*size.width/24, 9*size.height/20)];
-    [self addChild:menu z:4 tag:4];
+    [self addChild:menu z:4 tag:TAG__CHOICEMENU];
 }
 -(void)Choicemenu1:sender
 {
@@ -346,7 +390,7 @@
     
     
 }
--(void)rotateWrench
+-(void)rotateWrench//转动扳手
 {
     CCSprite *wrench=[CCSprite spriteWithFile:@"wrench.png"];
     wrench.position=ccp(selSprite.position.x-40, selSprite.position.y+40);
@@ -359,7 +403,7 @@
     [wrench runAction:[CCSequence actions:repeat,delete, nil]];
     
 }
--(void)deleteWrench:(id)sender
+-(void)deleteWrench:(id)sender //删除扳手
 {
     [self removeChild:sender cleanup:YES];
 }
@@ -400,25 +444,40 @@
    
     [label setString:[NSString stringWithFormat:@"石油：%i\n粮食：%i\n钢铁：%i\n锡矿：%i",playerResource.Fuel,playerResource.Crop,playerResource.Steel,playerResource.Xi]];
 }
--(void)delete:(id)sender
+-(void)delete:(id)sender  //删除建筑
 {
     [self removeChildByTag:103 cleanup:YES];
     [self removeChild:selSprite  cleanup:YES];
     [buildingSprites removeObject:selSprite ];
     
 }
--(void)upgrade:(id)sender
+-(void)upgrade:(id)sender  //升级建筑
 {
     [self removeChildByTag:103 cleanup:YES];
     //[self removeChild:selSprite cleanup:YES];
 }
--(void)sceneTransition:(id)sender
+-(void)sceneTransition:(id)sender  //转换到军事区
 {
-    CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
-    [[CCDirector sharedDirector] replaceScene:tran];
+     UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"Do you sure you want to leave?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes" ,@"No", nil];
+    [alert show];
+                                                                                           
+   
 }
-
--(void)addup:(id)sender
+-(void)alertView:(UIAlertView*)actionsheet //uikit 的应用 （试验）  弹出提示按钮
+   clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==0) {
+        
+    }
+    else if (buttonIndex==1) {
+        CCTransitionFade *tran=[CCTransitionFade transitionWithDuration:2 scene:[ResourceScene scene] withColor:ccWHITE];
+        [[CCDirector sharedDirector] replaceScene:tran];
+    }
+    else{
+        
+    }
+}
+-(void)addup:(id)sender//资源增加
 {
     [playerResource setCrop:50];
     [playerResource setFuel:50];

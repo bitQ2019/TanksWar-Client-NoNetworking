@@ -13,8 +13,10 @@
 #import "AppDelegate.h"
 #import "Resources.h"
 #import "ResourceScene.h"
+
 // HelloWorldLayer
 @interface HelloWorldLayer : CCLayer<PomeloDelegate>
+
 {
     
     CGPoint Tpoint;
@@ -32,6 +34,7 @@
 
 // returns a CCScene that contains the HelloWorldLayer as the only child
 +(CCScene *) scene;
+
 @property (weak, nonatomic) Pomelo *pomelo;
 @property(strong,nonatomic)NSString *name;
 @property(strong,nonatomic)NSString *channel;
